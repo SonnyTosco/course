@@ -1,0 +1,28 @@
+<html>
+  <head>
+    <link rel="stylesheet" href="/static/css/styles.css" type="text/css">
+  </head>
+  <body>
+    <h2>Add a New Course</h2>
+    <form action='/add_course' method='post'>
+      Title:<input type='text' name='title'>
+      Description:<input type='textarea' name='description'>
+      <input type='submit' value='add'>
+    </form>
+    <h2>Courses</h2>
+    <table>
+      <th>Course Name</th>
+      <th>Description</th>
+      <th>Date Added</th>
+      <th>Actions</th>
+      {% for course in courses %}
+      <tr>
+        <td>{{course['title']}}</td>
+        <td>{{course['description']}}</td>
+        <td>{{course['created_at']}}</td>
+        <td><a href="/confirm_delete/{{course['id']}}"><button>Delete Course</button></td>
+      </tr>
+      {% endfor %}
+    </table>
+  </body>
+</html>
